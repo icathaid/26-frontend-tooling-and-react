@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+import './styles.css';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -15,6 +17,7 @@ class App extends React.Component {
     let polarity = 'neutral';
     if (counter < 0) {
       polarity = 'negative'
+
     }
     else if (counter > 0) {
       polarity = 'positive'
@@ -37,21 +40,13 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <button onClick={this.upHandler}>up</button>
-        <p>{this.state.counter}</p>
+        <p className={this.state.polarity}>{this.state.counter}</p>
         <button onClick={this.downHandler}>down</button>
-        <h1>polarity:</h1>
-        <h2>{this.state.polarity}</h2>
+        <h1 className={this.state.polarity}>{this.state.polarity}</h1>
       </React.Fragment>
     );
   }
 }
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <h1>Counter</h1>
-//     </div>
-//   );
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(<App />, rootElement);
