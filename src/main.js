@@ -12,6 +12,7 @@ class App extends React.Component {
     };
     this.upHandler = this.upHandler.bind(this);
     this.downHandler = this.downHandler.bind(this);
+    this.clear = this.clear.bind(this);
   }
   updateState(counter){
     let polarity = 'neutral';
@@ -36,6 +37,9 @@ class App extends React.Component {
   downHandler() {
     this.updateState(this.state.counter - 1);
   }
+  clear() {
+    this.updateState(this.state.counter = 0);
+  }
   render() {
     return (
       <React.Fragment>
@@ -43,6 +47,7 @@ class App extends React.Component {
         <p className={this.state.polarity}>{this.state.counter}</p>
         <button onClick={this.downHandler}>down</button>
         <h1 className={this.state.polarity}>{this.state.polarity}</h1>
+        <button onClick={this.clear}>clear</button>
       </React.Fragment>
     );
   }
