@@ -38,7 +38,7 @@ class App extends React.Component {
     this.updateState(this.state.counter - 1);
   }
   clear() {
-    this.updateState(this.state.counter = 0);
+    this.updateState(0);
   }
   render() {
     return (
