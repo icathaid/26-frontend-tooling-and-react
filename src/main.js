@@ -11,48 +11,27 @@ class App extends React.Component {
     this.upHandler = this.upHandler.bind(this);
     this.downHandler = this.downHandler.bind(this);
   }
-  upHandler() {
-    const counter = this.state.counter + 1;
+  updateState(counter){
+    let polarity = 'neutral';
     if (counter < 0) {
-      this.setState({
-        polarity: 'negative'
-      })
+      polarity = 'negative'
     }
     else if (counter > 0) {
-      this.setState({
-        polarity: 'positive'
-      })
+      polarity = 'positive'
     }
     else {
-      this.setState({
-        polarity: 'neutral'
-      })
+      polarity = 'neutral'
     }
     this.setState({
-      counter: counter
-    });
-    this.setState({
-      counter: counter,
+      counter,
+      polarity
     });
   }
+  upHandler() {
+    this.updateState(this.state.counter + 1);
+  }
   downHandler() {
-    const counter = this.state.counter - 1;
-    if(counter < 0){
-      this.setState({
-        polarity: 'negative'})
-    }
-    else if(counter > 0){
-      this.setState({
-        polarity: 'positive'
-      })
-    }
-    else {
-      this.setState({
-        polarity: 'neutral'})
-    }
-    this.setState({
-      counter: counter
-    });
+    this.updateState(this.state.counter - 1);
   }
   render() {
     return (
