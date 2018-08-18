@@ -1,12 +1,37 @@
-import React from "react";
+import React, {Component} from "react";
 import ReactDOM from "react-dom";
+import cowsay, {say} from "cowsay";
+import faker from "faker";
+
 
 import './style/app.scss';
 
-class App extends React.Component {
+class App extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            content: say({
+                text: faker.fake("({{lorem.sentence}})")
+            }),
+            loaded: true,
+        };
+        this.fakeStuff = this.fakeStuff.bind(this);
+    }
+    getContent(){
+        return <pre>{this.state.content}</pre>
+    }
+    fakeStuff(){
+        let lorem = faker.lorem.sentence(6);
+        const content = say({text:lorem});
+        this.setState({content});
+    }
     render() {
-        return 'Hola';
+        return <div className="App">
+            {this.state.loaded && this.getContent()}
+            <button onClick={this.fakeStuff}>Click Me</button>
+        </div>
     }
 }
+
 
 ReactDOM.render(<App />, document.getElementById('root'))
