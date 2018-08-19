@@ -13,7 +13,6 @@ class App extends Component {
             content: say({
                 text: faker.fake("({{lorem.sentence}})")
             }),
-            loaded: true,
         };
         this.fakeStuff = this.fakeStuff.bind(this);
     }
@@ -27,7 +26,8 @@ class App extends Component {
     }
     render() {
         return <div className="App">
-            {this.state.loaded && this.getContent()}
+            <h1>Generate Cowsay Lorem</h1>
+            {this.getContent()}
             <button onClick={this.fakeStuff}>Click Me</button>
         </div>
     }
