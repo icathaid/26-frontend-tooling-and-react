@@ -28,11 +28,15 @@ class App extends Component {
         this.setState({content});
     }
     randomNumber(){
-        let result = Math.floor((Math.random() * 100) + 1);
-        if(result > 57){
-            return alert('LOSS');
+        let resultArray = [];
+        for(var i = 0; i < 3; i++){
+            let result = Math.floor((Math.random() * 100) + 1);
+            if(result > 57){
+                resultArray.push('LOSS')
+            }
+            else resultArray.push('WIN')
         }
-        else return alert('WIN');
+        return alert(resultArray);
     }
     testAPI(){
         let bill = {
